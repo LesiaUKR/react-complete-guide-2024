@@ -1,4 +1,5 @@
 import React, {forwardRef, useImperativeHandle, useRef} from "react";
+import {createPortal} from 'react-dom';
 
 const ResultModal =  forwardRef(function ResultModal({targetTime, remainingTime, onReset }, ref) {
   // створюємо посилання на елемент dialog і використовуємо його для відкриття модального вікна
@@ -22,7 +23,7 @@ dialog.current.showModal();
   };
 });
 
-  return (
+  return createPortal(
     <dialog ref={dialog} className="result-modal" onClose={onReset}>   
       {userLost && <h2>You lost!</h2>}
       {!userLost && <h2>You Score: {score}!</h2>}
@@ -35,7 +36,8 @@ dialog.current.showModal();
       <form method="dialog" onSubmit={onReset}>
         <button>Close</button>
       </form>
-    </dialog>
+    </dialog>, 
+    document.getElementById("modal")
   );
 })
 

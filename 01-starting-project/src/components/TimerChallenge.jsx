@@ -15,9 +15,6 @@ if (timeRemaining <=0){
   dialog.current.open();
 }
 
-function handleReset(){
-  setTimerRemaining(targetTime * 1000);
-}
   // змінимо setTimeout на setInterval, щоб можна було зупинити таймер
   // setInterval відпрацьовує через певний проміжок часу, але не зупиняється
   function handleStartBtn() {
