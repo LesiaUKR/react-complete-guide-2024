@@ -21,23 +21,28 @@ function App() {
         <section id="core-concepts">
           <h2>Core Concepts</h2>
           <ul>
-            {CORE_CONCEPTS.map(({ image, title, description }) => (
+            {/* {CORE_CONCEPTS.map(({ image, title, description }) => (
               <CoreConcepts
               key={title}
                 title={title}
                 description={description}
                 image={image}
               />
-            ))}
+            ))} */}
+            {/* інший спосіб реалізації використовуючи спред оператор*/}
+        {CORE_CONCEPTS.map((conceptItem) => (
+              <CoreConcepts key={conceptItem.title} {...conceptItem} />
+))}
+
           </ul>
         </section>
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-                <TabButton onSelect={()=>handleSelectTabBtn('components')}>Components</TabButton>
-                <TabButton onSelect={()=>handleSelectTabBtn('jsx')}>JSX</TabButton>
-                <TabButton onSelect={()=>handleSelectTabBtn('props')}>Props</TabButton>
-                <TabButton onSelect={()=>handleSelectTabBtn('state')}>State</TabButton>
+                <TabButton isSelected={selectedTopic === 'components'} onSelect={()=>handleSelectTabBtn('components')}>Components</TabButton>
+                <TabButton isSelected={selectedTopic === 'jsx'} onSelect={()=>handleSelectTabBtn('jsx')}>JSX</TabButton>
+                <TabButton isSelected={selectedTopic === 'props'} onSelect={()=>handleSelectTabBtn('props')}>Props</TabButton>
+                <TabButton isSelected={selectedTopic === 'state'} onSelect={()=>handleSelectTabBtn('state')}>State</TabButton>
           </menu>
             {!selectedTopic ? (
               <p>Please select a topic</p>
