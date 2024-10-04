@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function Player({ initialName, symbol }) {
+export default function Player({ initialName, symbol, isActive, onChangeName }) {
   const [playerName, setPlayerName] = useState(initialName);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -8,7 +8,7 @@ export default function Player({ initialName, symbol }) {
    // коли потрібно змінити стан на протилежний, рекомендується використовувати
    // функцію зворотнього виклику - best practice way
       setIsEditing(editing => !editing);
-
+      if (isEditing){onChangeName(symbol, playerName);}
       // setIsEditing(!isEditing); - також можна, але при такому підході можуть виникнути проблеми
       // бо React може не встигнути оновити стан, і ви отримаєте неправильний результат
   };
@@ -32,7 +32,7 @@ export default function Player({ initialName, symbol }) {
   }
   
   return (
-    <li>
+    <li className={isActive?'active':undefined}>
       <span className="player">
         {/* якщо isEditing === true, то відобразити input, інакше - span */}
         {/* {isEditing && <input type="text" value={name} required/>}
