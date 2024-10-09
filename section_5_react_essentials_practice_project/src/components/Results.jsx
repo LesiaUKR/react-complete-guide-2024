@@ -8,7 +8,8 @@ export default function Results({ input }) {
     resultsData[0].interest -
     resultsData[0].annualInvestment;
   return (
-    <table id="results">
+
+    <table id="result">
       <thead>
         <tr>
           <th>Year</th>
@@ -34,13 +35,14 @@ export default function Results({ input }) {
               <td key={yearData.year}>
                 {formatter.format(yearData.valueEndOfYear)}
               </td>
-              <td key={yearData.year}>{totalInterest}</td>
               <td key={yearData.year}>{formatter.format(yearData.interest)}</td>
+              <td key={yearData.year}>{formatter.format(totalInterest)}</td>
               <td key={yearData.year}>{formatter.format(totalAmountInvested)}</td>
             </tr>
           );
         })}
       </tbody>
     </table>
+
   );
 }
