@@ -1,4 +1,14 @@
 import { useState } from 'react';
+import styled from 'styled-components';
+import Button from './Button';
+import CustomInput from './Input';
+
+const ControlContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+`
 
 export default function AuthInputs() {
   const [enteredEmail, setEnteredEmail] = useState('');
@@ -22,31 +32,42 @@ export default function AuthInputs() {
 
   return (
     <div id="auth-inputs">
-      <div className="controls">
-        <p>
-          <label>Email</label>
-          <input
+      <ControlContainer>
+        {/* <p> */}
+          {/* приклад використання класу, який змінює колір тексту в залежності від умови з використанням ванільного CSS*/}
+          {/* <input className={`label ${emailNotValid ? 'invalid': ''}`}>Email</input> */}
+         {/* приклад  використанняstyled component*/}
+          {/* <Label $invalid={emailNotValid}>Email</Label> */}
+          <CustomInput
+          label="Email"
             type="email"
-            className={emailNotValid ? 'invalid' : undefined}
+            //приклад використання інлайнового стилю, який по умові змінює колір фону
+            // style={{
+            //   backgroundColor: emailNotValid ? 'red' : 'white',
+            // }}
+          //  className={emailNotValid ? 'invalid' : undefined}
+          $invalid={emailNotValid}
             onChange={(event) => handleInputChange('email', event.target.value)}
           />
-        </p>
-        <p>
-          <label>Password</label>
-          <input
+        {/* </p> */}
+        {/* <p> */}
+          {/* <Label $invalid={passwordNotValid}>Password</Label> */}
+          <CustomInput
+          label="Password"
             type="password"
-            className={passwordNotValid ? 'invalid' : undefined}
+            $invalid={passwordNotValid}
+          //  className={passwordNotValid ? 'invalid' : undefined}
             onChange={(event) =>
               handleInputChange('password', event.target.value)
             }
           />
-        </p>
-      </div>
+        {/* </p> */}
+      </ControlContainer>
       <div className="actions">
         <button type="button" className="text-button">
           Create a new account
         </button>
-        <button className='button' onClick={handleLogin}>Sign In</button>
+        <Button className='button' onClick={handleLogin}>Sign In</Button>
       </div>
     </div>
   );
