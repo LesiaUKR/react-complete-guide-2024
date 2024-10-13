@@ -30,14 +30,14 @@ export default function Results({ input }) {
             totalInterest;
 
           return (
-            <tr>
-              <td key={yearData.year}>{yearData.year}</td>
-              <td key={yearData.year}>
+            <tr key={yearData.year}>
+              <td >{yearData.year}</td>
+              <td >
                 {formatter.format(yearData.valueEndOfYear)}
               </td>
-              <td key={yearData.year}>{formatter.format(yearData.interest)}</td>
-              <td key={yearData.year}>{formatter.format(totalInterest)}</td>
-              <td key={yearData.year}>{formatter.format(totalAmountInvested)}</td>
+              <td >{formatter.format(yearData.interest)}</td>
+              <td >{formatter.format(totalInterest)}</td>
+              <td >{formatter.format(totalAmountInvested)}</td>
             </tr>
           );
         })}
