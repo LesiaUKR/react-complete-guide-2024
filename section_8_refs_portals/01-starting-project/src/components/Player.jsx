@@ -1,7 +1,8 @@
+import React from "react";
 import { useRef, useState } from "react";
 
 export default function Player() {
-  const playerName = useRef(); //JS object that has a current property that points to the input element
+  const playerName = useRef(null); //JS object that has a current property that points to the input element
 
   const [enteredPlayerName, setEnteredPlayerName] = useState(null);
 
