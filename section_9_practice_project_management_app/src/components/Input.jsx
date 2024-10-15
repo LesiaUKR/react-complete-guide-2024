@@ -18,6 +18,7 @@ import React, {forwardRef} from "react";
         <input
         ref={ref}
         className={classes}
+        {...props}
         />
       )}
     </div>
